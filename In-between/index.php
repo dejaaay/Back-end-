@@ -10,7 +10,8 @@ if (!isset($_SESSION['round'])) {
 }
 
 function generateCard() {
-    $ranks = [1,2, 3, 4, 5, 6, 7, 8, 9, 10];
+    $ranks = [1 => 'In-between/images/1.png',
+            2, 3, 4, 5, 6, 7, 8, 9, 10];
     return ['rank' => $ranks[array_rand($ranks)]];
 }
 
