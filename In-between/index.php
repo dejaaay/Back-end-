@@ -2,12 +2,11 @@
 session_start();
 
 function generateCard() {
-    $suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
+
     $ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
     
     return [
         'rank' => $ranks[array_rand($ranks)],
-        'suit' => $suits[array_rand($suits)]
     ];
 }
 
@@ -65,13 +64,13 @@ if (isset($_POST['guess']) && $_SESSION['stage'] == 'dealt') {
     <?php if (!isset($_SESSION['stage'])): ?>
         <a href="?action=start">Start Game</a>
     <?php elseif ($_SESSION['stage'] == 'started'): ?>
-        <p>Card 1: <?= $_SESSION['card1']['rank'] ?> of <?= $_SESSION['card1']['suit'] ?></p>
-        <p>Card 2: <?= $_SESSION['card2']['rank'] ?> of <?= $_SESSION['card2']['suit'] ?></p>
+        <p>Card 1: <?= $_SESSION['card1']['rank'] ?>  </p>
+        <p>Card 2: <?= $_SESSION['card2']['rank'] ?>  </p>
         <a href="?action=deal">Deal</a>
     <?php elseif ($_SESSION['stage'] == 'dealt'): ?>
-        <p>Card 1: <?= $_SESSION['card1']['rank'] ?> of <?= $_SESSION['card1']['suit'] ?></p>
-        <p>Card 2: <?= $_SESSION['card2']['rank'] ?> of <?= $_SESSION['card2']['suit'] ?></p>
-        <p>Card 3: <?= $_SESSION['card3']['rank'] ?> of <?= $_SESSION['card3']['suit'] ?></p>
+        <p>Card 1: <?= $_SESSION['card1']['rank'] ?> </p>
+        <p>Card 2: <?= $_SESSION['card2']['rank'] ?> </p>
+        <p>Card 3: <?= $_SESSION['card3']['rank'] ?> </p>
         <?php if ($_SESSION['card1']['rank'] === $_SESSION['card2']['rank']): ?>
             <form action="game.php" method="post">
                 <input type="submit" name="guess" value="higher">

@@ -26,7 +26,7 @@ if (isset($_GET['action'])) {
         if ($comparison1 < 0 && $comparison2 > 0 || $comparison1 > 0 && $comparison2 < 0) {
             $_SESSION['result'] = "Congratulations! You win!";
         } else {
-            $_SESSION['result'] = "Sorry, You lose.";
+            $_SESSION['result'] = "Sorry, You lose.";   
         }
     }
     header("Location: game1.php"); // Redirect to avoid form resubmission issues
