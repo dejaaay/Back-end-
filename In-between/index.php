@@ -11,15 +11,16 @@ if (!isset($_SESSION['round'])) {
 
 function generateCard() {
     $ranks = [  
-        1 ,
-        2 ,
-        4 ,
-        5 ,
-        6 ,
-        7 ,
-        8 ,
-        9 ,
-        10];
+        1 => 'images/1.png',
+        2 => 'images/2.png',
+        3 => 'images/3.png',
+        4 => 'images/4.png',
+        5 => 'images/5.png',
+        6 => 'images/6.png',
+        7 => 'images/7.png',
+        8 => 'images/8.png',
+        9 => 'images/9.png',
+        10 =>'images/10.png'];
     return ['rank' => $ranks[array_rand($ranks)]];
 }
 
@@ -108,6 +109,16 @@ if (isset($_POST['guess']) && $_SESSION['stage'] == 'dealt') {
             font-family: georgia; 
             font-size: 100px;
         }
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .col .card-body img{
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -127,7 +138,7 @@ if (isset($_POST['guess']) && $_SESSION['stage'] == 'dealt') {
             <div class="col d-flex justify-content-center align-items-center pb-5">        
                 <div class="card text-bg-dark">
                     <div class="card-body">
-                        <p>Card 1: <?= $_SESSION['card1']['rank'] ?>  </p>
+                        <img src="<?php echo $_SESSION['card1']['rank']; ?>" class="cardCustom" alt="Left Card">
                     </div>
                 </div>
             </div>
@@ -135,7 +146,8 @@ if (isset($_POST['guess']) && $_SESSION['stage'] == 'dealt') {
             <div class="col d-flex justify-content-center align-items-center pb-5"> 
                 <div class="card text-bg-dark">
                     <div class="card-body">
-                        <p>Card 2: <?= $_SESSION['card2']['rank'] ?>  </p>
+                        <img src="<?php echo $_SESSION['card2']['rank']; ?>" class="cardCustom" alt="Left Card">
+
                     </div>
                 </div>
             </div>  
@@ -153,7 +165,7 @@ if (isset($_POST['guess']) && $_SESSION['stage'] == 'dealt') {
             <div class="col d-flex justify-content-center align-items-center pb-5">
                 <div class="card text-bg-dark">
                     <div class="card-body">
-                        <p>Card 1: <?= $_SESSION['card1']['rank'] ?> </p>
+                        <img src="<?php echo $_SESSION['card1']['rank']; ?>" class="cardCustom" alt="Left Card">
                     </div>
                 </div>
             </div>
@@ -161,7 +173,7 @@ if (isset($_POST['guess']) && $_SESSION['stage'] == 'dealt') {
             <div class="col d-flex justify-content-center align-items-center pb-5"> 
                 <div class="card text-bg-dark">
                     <div class="card-body">
-                    <p>Card 2: <?= $_SESSION['card2']['rank'] ?> </p>
+                    <img src="<?php echo $_SESSION['card2']['rank']; ?>" class="cardCustom" alt="Left Card">
                 </div>
             </div>
         </div>
@@ -170,7 +182,7 @@ if (isset($_POST['guess']) && $_SESSION['stage'] == 'dealt') {
             <div class="col d-flex justify-content-center align-items-center pb-5"> 
                 <div class="card text-bg-dark">
                     <div class="card-body">
-                        <p>Card 3: <?= $_SESSION['card3']['rank'] ?> </p>
+                        <img src="<?php echo $_SESSION['card3']['rank']; ?>" class="cardCustom" alt="Left Card">
                 </div>
             </div>
         </div>
