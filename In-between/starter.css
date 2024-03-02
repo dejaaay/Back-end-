@@ -1,0 +1,27 @@
+body {
+  background-image: url("images/starter.png");
+  background-position: center;
+  height: 100vh;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+  text-align: center;
+}
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* This makes the container take the full viewport height */
+  text-align: center; /* Ensures the text within the container is centered as well */
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: black; /* Or use any color code, like #000000 */
+  text-decoration: none; /* Removes the underline from links */
+}
