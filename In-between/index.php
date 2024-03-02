@@ -10,7 +10,17 @@ if (!isset($_SESSION['round'])) {
 }
 
 function generateCard() {
-    $ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; // Including face cards and Ace as 11, 12, 13, 14
+    $ranks = [  
+        1 => 'images/1.gif',
+        2 => 'images/2.gif',
+        3 => 'images/3.gif',
+        4 => 'images/4.gif',
+        5 => 'images/5.gif',
+        6 => 'images/6.gif',
+        7 => 'images/7.gif',
+        8 => 'images/8.gif',
+        9 => 'images/9.gif',
+        ];
     return ['rank' => $ranks[array_rand($ranks)]];
 }
 
@@ -92,40 +102,168 @@ if (isset($_GET['action'])) {
 <html>
 <head>
     <title>In Between Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-image: url("images/pixels.gif");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+            
         }
+
+        h1, p{
+            color: #e7dfd9; 
+
+        }
+
+        .header{
+            font-family: georgia; 
+            font-size: 100px;
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 15px 30px 15px 30px;
+        }
+
+        .col .card-body img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .card{
+            border-radius: 15px 30px 15px 30px;
+        }
+        a:link, a:visited, a:hover, a:active {
+            color: black; /* Or use any color code, like #000000 */
+            text-decoration: none; /* Removes the underline from links */
+        }
+
     </style>
 </head>
 <body>
-    <h1>In Between Game</h1>
-    <p>Round: <?= $_SESSION['round'] ?> / 10</p>
-    <p>Score: <?= $_SESSION['score'] ?></p>
+    <div class="header">
+        <p>In Between Game</p>
+        <h1>Round: <?= $_SESSION['round'] ?> / 10</h1>
+        <h1>Score: <?= $_SESSION['score'] ?></h1>
+    </div>
     
     <?php if (!isset($_SESSION['stage']) || $_SESSION['stage'] == 'start' || $_SESSION['round'] >= 10): ?>
         <p>Game Over. Your final score is: <?= $_SESSION['score'] ?></p>
-        <a href="?action=start">Start New Game</a>
+        <a href="?action=start">
+            <button type="button" class="btn btn-light">Play again!</button>
+        </a>
+        <!-- High or Low Cards -->
     <?php elseif ($_SESSION['stage'] == 'guessHigherLower'): ?>
-        <p>Card 1: <?= $_SESSION['card1']['rank'] ?></p>
-        <p>Card 2: <?= $_SESSION['card2']['rank'] ?></p>
+        <div class="row">
+            <div class="col d-flex justify-content-center align-items-center pb-5">        
+            <div class="card text-bg-dark" style="width: 20rem; height:30rem ; margin-left: 50px;">
+                    <div class="card-header">
+                        1st Card
+                        <div class="card-body">
+                            <img src="<?php echo $_SESSION['card1']['rank']; ?>" class="cardCustom" alt="Left Card">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col d-flex justify-content-center align-items-center pb-5"> 
+            <div class="card text-bg-dark" style="width: 20rem; height: 30rem ; margin-left: 250px;">
+                    <div class="card-header">
+                        2nd Card
+                        <div class="card-body">
+                            <img src="<?php echo $_SESSION['card2']['rank']; ?>" class="cardCustom" alt="Left Card">
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
         <form action="index.php" method="get">
             <input type="hidden" name="action" value="deal">
             <button type="submit" name="guess" value="higher">Higher</button>
             <button type="submit" name="guess" value="lower">Lower</button>
         </form>
+
+        <!-- Deal of 2 cards -->
     <?php elseif ($_SESSION['stage'] == 'started'): ?>
-        <p>Card 1: <?= $_SESSION['card1']['rank'] ?></p>
-        <p>Card 2: <?= $_SESSION['card2']['rank'] ?></p>
-        <a href="?action=deal">Deal</a>
-        <a href="?action=start">No Deal</a> 
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-center align-items-center pb-5">        
+            <div class="card text-bg-dark" style="width: 20rem; height:30rem ; margin-left: 50px;">
+                <img src="<?php echo $_SESSION['card1']['rank']; ?>" class="cardCustom" alt="Left Card">
+                    <div class="card-header">
+                        1st Card
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col d-flex justify-content-center align-items-center pb-5"> 
+            <div class="card text-bg-dark" style="width: 20rem; height: 30rem ; margin-left: 50px;">
+                    <img src="<?php echo $_SESSION['card2']['rank']; ?>" class="cardCustom" alt="Left Card">
+                    <div class="card-header">
+                        2nd Card
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+        <a href="?action=deal">
+            <button type="button" class="btn btn-light mb-4">Deal</button>
+        </a>
+        <a href="?action=start">
+        <button type="button" class="btn btn-light mb-4">No Deal</button>  
+        
+        <!-- Deal of 3 Cards -->
     <?php elseif ($_SESSION['stage'] == 'guessed'): ?>
-        <p>Card 1: <?= $_SESSION['card1']['rank'] ?></p>
-        <p>Card 2: <?= $_SESSION['card2']['rank'] ?></p>
-        <p>Card 3: <?= $_SESSION['card3']['rank'] ?></p>
+        <div class="row">
+            <div class="col d-flex justify-content-center align-items-center pb-5">
+            <div class="card text-bg-dark" style="width: 20rem; height:30rem ; margin-left: 50px;">
+                <img src="<?php echo $_SESSION['card1']['rank']; ?>" class="cardCustom" alt="Left Card">
+                    <div class="card-header">
+                        1st Card
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex justify-content-center align-items-center pb-5"> 
+            <div class="card text-bg-dark" style="width: 20rem; height: 30rem ; margin-left: 50px;">
+                <img src="<?php echo $_SESSION['card2']['rank']; ?>" class="cardCustom" alt="Left Card">
+                    <div class="card-header">
+                            2nd Card
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col d-flex justify-content-center align-items-center pb-5"> 
+            <div class="card text-bg-dark" style="width: 20rem; height: 30rem ; margin-left: 50px;">
+                <img src="<?php echo $_SESSION['card3']['rank']; ?>" class="cardCustom" alt="Left Card">
+                    <div class="card-header">
+                        3rd Card
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <p><?= $_SESSION['guessResult'] ?></p>
-        <a href="?action=start">Next Round</a>
+        <a href="?action=start">
+            <button type="button" class="btn btn-light">Next Round</button>
+        </a>
     <?php endif; ?>
 </body>
 </html>

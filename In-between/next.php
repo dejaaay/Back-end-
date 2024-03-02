@@ -31,7 +31,7 @@ a {
   </style>
   <body>
   <div class="center-container">
-    <h2 class="text-center">Are you 18 years old?</h2>
+    <h2 class="text-center">Are you 18 years old above?</h2>
     <div class="row">
         <div class="col">
         <button id="secondButton">Yes</button>

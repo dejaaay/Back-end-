@@ -8,7 +8,7 @@
   </head>
   <style>
           body {
-            background-image: url('images/bg2.gif');
+            background-image: url('images/bggold.png');
             background-size: cover;
             background-attachment: fixed;
             background-repeat: no-repeat;
