@@ -9,13 +9,13 @@
 
 </head>
   <body>
-     <div class="center-container pt-3">
-    <h1 class="text-center pt-5 text-light">In-Between</h1>
+    <div class="center-container pt-3">
+        <h1 class="text-center pt-5 text-light"></h1>
     </div>
     <div class="row">
         <div class="col d-flex justify-content-center align-items-center pb-5">
-            <div class="card text-bg-dark" style="width: 20rem; height: 20rem ; margin-left: 250px;"> <!-- You can adjust the width as needed -->
-                <img src="images/bg5.gif" class="card-img" alt="...">
+            <div class="card text-bg-dark" style="width: 10rem; height: 10rem ; margin-left: 370px;"> <!-- You can adjust the width as needed -->
+                <!-- <img src="images/bg5.gif" class="card-img" alt="..."> -->
                 <div class="card-img-overlay">
                     <h3 class="card-title">Play Now!</h3>
                     <button type="button" class="btn btn-light mt-3"><a href="index.php">Let's Play</a></button>
@@ -23,10 +23,10 @@
             </div>
         </div>
         <div class="col d-flex justify-content-center align-items-center pb-5">
-            <div class="card text-bg-dark" style="width: 20rem;height: 20rem ; margin-right: 250px;"> <!-- You can adjust the width as needed -->
-                <img src="images/bg5.gif" class="card-img" alt="...">
+            <div class="card text-bg-dark" style="width: 10rem;height: 10rem ; margin-right: 400px;"> <!-- You can adjust the width as needed -->
+                <!-- <img src="images/bg5.gif" class="card-img" alt="..."> -->
                 <div class="card-img-overlay">
-                <h3 class="card-title">How To Play</h3>
+                <h3 class="card-title">How To?</h3>
                     <button type="button" class="btn btn-light mt-3"><a href="how.php">Learn How</a></button>
                 </div>
             </div>
